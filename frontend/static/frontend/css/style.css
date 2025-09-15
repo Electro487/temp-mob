@@ -960,7 +960,7 @@ input[type="submit"]:hover {
 
 
 /* Screens between 544px and 768px */
-@media screen and (min-width: 1024px) and (max-width: 1280px) {
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
   main {
     /* padding: 0;
     margin: 0; */
@@ -986,7 +986,7 @@ input[type="submit"]:hover {
     position: absolute; 
     left: 250px;
     transition: left .2s ease, transform .2s ease;
-    border: 2px solid red;
+    /* border: 2px solid red; */
   }
 
   .benefits_section {
@@ -1018,6 +1018,12 @@ input[type="submit"]:hover {
     min-width: 100%;      /* adjust container width */
     padding: clamp(10px, 3vw, 15px) 0;
     /* border: 2px solid red; */
+
+  }
+
+  main.login-active{
+    /* border: 2px solid red; */
+    margin-left: 0;
 
   }
 
