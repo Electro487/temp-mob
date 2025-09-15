@@ -1,0 +1,1115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  user-select: none;
+  outline: none;
+}
+
+html {
+  font-size: clamp(5px, 1.5vw, 7.94px); /* Fluid typography */
+  height: 100%;
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  background: url(../images/newbg.jpg) no-repeat center center fixed;
+  background-size: cover;
+  padding: 0 clamp(10px, 2vw, 20px); /* Responsive padding */
+}
+
+/* Mobile-first approach */
+main {
+  display: flex;
+  flex-direction: column; /* Mobile: stack vertically */
+  /* justify-content: center;
+  align-items: center; */
+  width: 100%;
+  max-width: 500px; /* Mobile constraint */
+  position: relative;
+  /* margin: 0 auto; */
+  min-height: 100vh;
+  transition: all 0.5s ease-in-out;
+  padding: clamp(15px, 3vh, 20px) 0;
+  /* border: 2px solid red; */
+
+}
+
+/* Tablet and up */
+@media screen and (min-width: 769px) {
+  main {
+    flex-direction: row;
+    width: min(1100px, 95vw);
+    max-width: 1100px;
+    margin-right: 5.5rem;
+    padding: 0;
+  }
+
+  main.login-active {
+    width: min(1250px, 95vw);
+    max-width: 1250px;
+    min-height: 100vh;
+    /* min-height: 70vh; */
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+    /* border: 2px solid red; */
+    margin-left: 11rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dino_container {
+  position: relative;
+  max-width: clamp(140px, 40vw, 200px);
+  bottom: auto;
+  left: 0;
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+.dino_img {
+  width: 100%;
+  display: block;
+}
+
+.eye {
+  width: clamp(12px, 3vw, 17px);
+  height: clamp(12px, 3vw, 17px);
+  background: #ecedeb00;
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pupil {
+  width: clamp(8px, 2vw, 11px);
+  height: clamp(8px, 2vw, 11px);
+  background: black;
+  border-radius: 50%;
+  transition: transform 0.1s linear;
+}
+
+.right-eye {
+  top: 21% !important;
+  left: 54.5% !important;
+  width: 0.8rem !important;
+  height: 1.2rem !important;
+}
+
+main.login-active .dino_container{
+  bottom: 0px;
+  left: 260px;
+  transform: scaleX(-1);
+}
+
+main.login-active .eye{
+  transform: scaleX(-1);
+}
+
+/* main.login-active .dino_container .eye {
+  top: 20.8% !important;
+  left: 43.5% !important;
+  width: 0.8rem;
+  height: 1.2rem;
+} */
+
+/* Desktop layout */
+@media screen and (min-width: 769px) {
+  .dino_container {
+    position: absolute;
+    max-width: 500px;
+    bottom: 0;
+    left: 31%;
+    margin: 0;
+  }
+
+  .right-eye {
+    top: 20.6%;
+    left: 53.2%;
+    width: 1.3rem !important;
+    height: 1.7rem !important;
+  }
+
+  /* main.login-active .dino_container {
+    left: 24%;
+    bottom: 47.5%;
+    width: 41%;
+    height: 41%;
+  }
+
+  main.login-active .dino_container .eye {
+    top: 48% !important;
+    left: 43%;
+    width: 17px;
+    height: 17px;
+  } */
+}
+
+/* Mobile dinosaur eye positioning */
+@media screen and (max-width: 768px) {
+  .right-eye {
+    top: 20.6%;
+    left: 53.2%;
+  }
+
+  main.login-active .dino_container .eye {
+    top: 45.75%;
+    left: 43%;
+  }
+}
+
+.ui_section {
+  width: 100%;
+  margin-left: 31px;
+  order: 2; /* Mobile: comes after form */
+  transform: none;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_section {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  order: 1; /* Mobile: form comes first */
+  color: #f2f2f2;
+  background-color: #f2f2f2;
+  background-image: none; /* Remove background on mobile */
+  transform: none;
+  transition: all 0.5s ease-in-out;
+  /* border: 2px solid red; */
+}
+
+/* Desktop layout adjustments */
+@media screen and (min-width: 769px) {
+  .ui_section {
+    width: 65%;
+    order: initial;
+    transform: translateX(0);
+    justify-content: flex-end;
+  }
+
+  .form_section {
+    width: 31.7%;
+    order: initial;
+    background-image: url(../images/softbg.jpg);
+    transform: translateX(0);
+  }
+
+  main.login-active .ui_section {
+    width: 41.5%;
+    transform: translateX(140.5%);
+  }
+
+  main.login-active .form_section {
+    transform: translateX(-129.5%);
+  }
+
+  main.login-active .benefits_section {
+    display: none;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(10rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.pic_section {
+  display: none; /* Hide on mobile */
+}
+
+@media screen and (min-width: 769px) {
+  .pic_section {
+    display: block;
+    padding-top: 3rem;
+    margin-bottom: 6.5rem;
+    position: relative;
+  }
+
+  .pic_section img {
+    max-width: min(450px, 40vw);
+    display: block;
+    animation: slideInRight 1s ease-in;
+  }
+
+  main.login-active .pic_section {
+    margin-bottom: 0rem;
+  }
+
+  main.login-active .pic_section img {
+    width: min(420px, 38vw);
+  }
+}
+
+.benefits_section {
+  display: none; /* Hide on mobile */
+}
+
+@media screen and (min-width: 769px) {
+  .benefits_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: clamp(20rem, 35vw, 38rem);
+    padding-top: 1px;
+    /* border: 2px solid red; */
+  }
+
+  .benefits_tagline {
+    font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    padding-right: 2rem;
+    color: black;
+  }
+
+  .benefits {
+    display: flex;
+    gap: clamp(1rem, 3vw, 2rem);
+    color: #f2f2f2;
+    /* flex-wrap: wrap; */
+  }
+
+  .benefit1,
+  .benefit2,
+  .benefit3 {
+    display: flex;
+    gap: 5px;
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
+    align-items: center;
+    color: black;
+  }
+}
+
+.signup_section,
+.login_section {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 0 auto;
+  color: #1c2120;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+@media screen and (min-width: 769px) {
+  .signup_section,
+  .login_section {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.design-bar {
+  margin: clamp(2rem, 4vh, 2.7rem) 0;
+  width: 100%;
+  height: clamp(5px, 1vh, 7px);
+  border-radius: 4px;
+  background: linear-gradient(135deg, #019e56, #0999d7);
+}
+
+.welcome_section {
+  /* margin-bottom: clamp(2.5rem, 6vh, 4.2rem); */
+  margin-bottom: clamp(1rem, 4vh, 2rem);
+  margin-left: 0.5rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 769px) {
+  .welcome_section {
+    text-align: left;
+  }
+
+  main.login-active .welcome_section {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.welcome_section p:nth-of-type(1) {
+  font-size: clamp(2.8rem, 8vw, 4rem);
+  font-weight: bold;
+  margin-bottom: clamp(0.8rem, 2vh, 1rem);
+  line-height: 0.99;
+}
+
+.welcome_section p:nth-of-type(2) {
+  font-size: clamp(1.2rem, 3vw, 1.35rem);
+}
+
+.form_fields {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0;
+  z-index: 20;
+}
+
+@media screen and (min-width: 769px) {
+  .form_fields {
+    margin-left: 0.5rem;
+  }
+}
+
+/* form {
+  margin-bottom: 3rem;
+} */
+
+label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: bold;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #0999d7 inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  height: clamp(4rem, 8vh, 4.5rem);
+  /* margin-bottom: clamp(1.5rem, 3vh, 2rem); */
+  margin-bottom: clamp(0.7rem, 2.1vh, 1.1rem);
+  padding-left: clamp(1.5rem, 4vw, 1.8rem);
+  border: 2px solid #f2f2f2;
+  background: linear-gradient(135deg, #0999d7, #019e56);
+  border-radius: 4px;
+  font-size: clamp(1.4rem, 3.5vw, 1.5rem);
+  outline: none;
+  color: #f2f2f2;
+}
+
+@media screen and (min-width: 769px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 98%;
+  }
+}
+
+input::placeholder {
+  color: #77c1dc;
+}
+
+.password-container,
+.confirm-password-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.toggle-password,
+.toggle-confirm-password {
+  position: absolute;
+  top: 15%;
+  right: 3%;
+  padding: 0;
+  cursor: pointer;
+  width: clamp(15px, 5vw, 18px);
+  height: auto;
+  display: block;
+}
+
+@media screen and (min-width: 769px) {
+  .toggle-password,
+  .toggle-confirm-password {
+    top: 8px;
+    right: 20px;
+    padding: 0;
+    width: clamp(18px, 5vw, 22px);
+  }
+}
+
+.form_fields label:nth-of-type(5) {
+  margin-top: clamp(1rem, 3vh, 1.5rem);
+  margin-bottom: clamp(2rem, 6vh, 4rem);
+  display: flex;
+  gap: 0.9rem;
+  font-size: clamp(1.1rem, 2.8vw, 1.3rem);
+  font-weight: normal;
+}
+
+input[type="checkbox"] {
+  margin-left: 0.5rem;
+}
+
+input[type="submit"] {
+  width: 100%;
+  font-size: clamp(1.8rem, 4.5vw, 2.3rem);
+  font-weight: bold;
+  color: #f2f2f2;
+  background: linear-gradient(135deg, #019e56, #0999d7);
+  display: block;
+  padding: clamp(0.8rem, 2vh, 1rem);
+  border: none;
+  border-radius: 8px;
+  margin: clamp(20px, 4vh, 30px) auto 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media screen and (min-width: 769px) {
+  input[type="submit"] {
+    width: 69.2%;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+}
+
+input[type="submit"]:hover {
+  background: linear-gradient(135deg, #0999d7, #019e56);
+}
+
+.forgot_password {
+  font-size: clamp(1.3rem, 3.2vw, 1.5rem);
+  font-weight: bold;
+  margin-bottom: clamp(2rem, 4vh, 4rem);
+  text-align: center;
+}
+
+@media screen and (min-width: 769px) {
+  .forgot_password {
+    text-align: left;
+  }
+}
+
+.login,
+.signup {
+  display: flex;
+  justify-content: center;
+  font-size: clamp(1.3rem, 3.2vw, 1.5rem);
+  gap: 0.7rem;
+  flex-direction: column;
+  text-align: center;
+}
+
+@media screen and (min-width: 769px) {
+  .login,
+  .signup {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+.login a,
+.signup a {
+  text-decoration: none;
+  color: #0999d7;
+}
+
+.tick_container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  font-weight: normal;
+  padding: 10px 0;
+  touch-action: manipulation;
+}
+
+@media screen and (min-width: 769px) {
+  .tick_container {
+    padding: 0;
+  }
+}
+
+.tick_container input {
+  display: none;
+}
+
+.tick_container svg {
+  overflow: visible;
+  margin-right: 6px;
+  width: clamp(1.6em, 4vw, 1.8em);
+  height: clamp(1.6em, 4vw, 1.8em);
+}
+
+.path {
+  fill: none;
+  stroke: #1c2120;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+  stroke-dasharray: 241 9999999;
+  stroke-dashoffset: 0;
+}
+
+.tick_container input:checked ~ svg .path {
+  stroke-dasharray: 70.5096664428711 9999999;
+  stroke-dashoffset: -262.2723388671875;
+}
+
+/* Error handling */
+.hidden {
+  display: none;
+}
+
+.error {
+  color: #dc3545 !important;
+  background-color: #f8d7da !important;
+  border: 1px solid #f5c6cb !important;
+  padding: clamp(6px, 2vw, 8px) clamp(10px, 3vw, 12px) !important;
+  border-radius: 4px !important;
+  margin-top: 5px !important;
+  margin-bottom: 10px !important;
+  font-size: clamp(12px, 3vw, 14px) !important;
+  font-weight: 500 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.non-field-errors {
+  color: #dc3545 !important;
+  background-color: #f8d7da !important;
+  border: 1px solid #f5c6cb !important;
+  padding: clamp(8px, 2.5vw, 10px) clamp(12px, 4vw, 15px) !important;
+  border-radius: 4px !important;
+  margin-bottom: 15px !important;
+  font-size: clamp(12px, 3vw, 14px) !important;
+  font-weight: 500 !important;
+  display: block !important;
+}
+
+/* Message alerts */
+.messages {
+  margin-bottom: 20px !important;
+}
+
+.alert {
+  padding: clamp(10px, 3vw, 16px) clamp(12px, 4vw, 20px) !important;
+  font-size: clamp(1.2rem, 3.5vw, 2rem) !important;
+  margin-bottom: 10px !important;
+  border-radius: 5px !important;
+  font-weight: 500 !important;
+  display: block !important;
+  position: fixed !important;
+  top: clamp(10px, 3vh, 20px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 9999 !important;
+  max-width: 95vw !important;
+  min-width: clamp(280px, 70vw, 300px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.alert-error {
+  color: #721c24 !important;
+  background-color: #f8d7da !important;
+  border: 1px solid #f5c6cb !important;
+}
+
+.alert-success {
+  color: #155724 !important;
+  background-color: #d4edda !important;
+  border: 1px solid #c3e6cb !important;
+}
+
+.alert-warning {
+  color: #856404 !important;
+  background-color: #fff3cd !important;
+  border: 1px solid #ffeaa7 !important;
+}
+
+.alert-info {
+  color: #0c5460 !important;
+  background-color: #d1ecf1 !important;
+  border: 1px solid #bee5eb !important;
+}
+
+.alert:nth-of-type(2) {
+  top: clamp(70px, 12vh, 80px) !important;
+}
+
+.alert:nth-of-type(3) {
+  top: clamp(130px, 20vh, 140px) !important;
+}
+
+.alert:nth-of-type(4) {
+  top: clamp(190px, 28vh, 200px) !important;
+}
+
+.form-field-error input {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+/* Google Login Button Styling */
+.google-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  margin-top: 0;
+  position: relative;
+}
+
+.google-login-divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.google-login-divider::before,
+.google-login-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #1c2120, transparent);
+}
+
+.google-login-divider span {
+  padding: 0 1rem;
+  color: #1c2120;
+  font-size: clamp(1.2rem, 3vw, 1.3rem);
+  font-weight: 500;
+  background: #f2f2f2;
+}
+
+.google-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: clamp(0.7rem, 2vh, 0.8rem) clamp(1rem, 3vw, 1.5rem);
+  background: #ffffff;
+  border: 2px solid #dadce0;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #3c4043;
+  font-size: clamp(1.3rem, 3.2vw, 1.5rem);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media screen and (min-width: 769px) {
+  .google-login-btn {
+    width: 69.2%;
+  }
+}
+
+.google-login-btn:hover {
+  background: #f8f9fa;
+  border-color: #dadce0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.google-login-btn:active {
+  background: #f1f3f4;
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.google-icon {
+  width: clamp(16px, 4vw, 20px);
+  height: clamp(16px, 4vw, 20px);
+  flex-shrink: 0;
+}
+
+.google-login-text {
+  white-space: nowrap;
+}
+
+/* Touch improvements for mobile */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="submit"],
+  .google-login-btn,
+  .tick_container {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  body {
+    -webkit-overflow-scrolling: touch;
+    background-attachment: scroll;
+  }
+
+  /* Ensure proper viewport handling */
+  main {
+    min-height: 100svh; /* Use small viewport height for mobile */
+  }
+}
+
+/* Landscape orientation adjustments */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .dino_container {
+    display: none; /* Hide dino in landscape to save space */
+  }
+
+  .welcome_section {
+    margin-bottom: 1.5rem;
+  }
+
+  .welcome_section p:nth-of-type(1) {
+    font-size: clamp(2.5rem, 6vw, 3rem);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    height: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .form_fields label:nth-of-type(5) {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* High DPI displays */
+@media screen and (min-resolution: 2dppx) {
+  .google-icon,
+  .dino_img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Container queries for future-proofing (when supported) */
+@supports (container-type: inline-size) {
+  .form_section {
+    container-type: inline-size;
+  }
+
+  @container (max-width: 400px) {
+    .welcome_section p:nth-of-type(1) {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+
+
+
+
+/* Screens smaller than 500px */
+@media screen and (max-width: 543px) {
+  
+  /* Main container adjustments */
+  main {
+    padding: clamp(8px, 3vw, 12px) 0;
+    min-height: 100svh; /* mobile viewport height fix */
+  }
+  
+  /* Headline text */
+  .welcome_section p:nth-of-type(1) {
+    font-size: clamp(4rem, 3.5vw, 6rem);
+  }
+  
+  .welcome_section p:nth-of-type(2) {
+    font-size: clamp(2rem, 3vw, 4rem);
+  }
+  
+  /* Inputs smaller */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    height: 5rem;
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 3vw, 4rem);
+  }
+  
+  label{
+    font-size: clamp(2rem, 3vw, 4rem);
+  }
+  
+  /* Dino adjustments */
+  .dino_container {
+    display: none;
+  }
+
+  /* Submit button smaller */
+  input[type="submit"] {
+    /* font-size: clamp(1.5rem, 4vw, 1.8rem); */
+    font-size: clamp(3rem, 4vw, 5rem);
+    padding: clamp(0.6rem, 2vh, 0.8rem);
+  }
+  
+  /* Hide benefits/pic sections to save space */
+  .benefits_section,
+  .pic_section {
+    display: none;
+  }
+  
+  .google-login-text{
+    font-size: clamp(2rem, 3vw, 4rem);
+  }
+  
+  .signup, .login p{
+    font-size: clamp(2.5rem, 3.5vw, 4.5rem);
+  }
+  
+  .signup, .login a{
+    font-size: clamp(2.5rem, 3.5vw, 4.5rem);
+  }
+  
+  main{
+    height: 100%;
+  }
+  
+  main.login-active {
+    justify-content: center;
+  }
+  
+  /* Landscape small phones */
+  @media (orientation: landscape) {
+    .dino_container {
+      display: none; /* hide dino in landscape for very small screens */
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      height: 3rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .welcome_section p:nth-of-type(1) {
+      font-size: clamp(1.8rem, 4vw, 2rem);
+    }
+  }
+}
+
+
+/* Screens between 544px and 768px */
+@media screen and (min-width: 544px) and (max-width: 768px) {
+  
+  main {
+    height: 100%;
+    max-width: 90%;      /* adjust container width */
+    padding: clamp(10px, 3vw, 15px) 0;
+  }
+
+  .welcome_section p:nth-of-type(1) {
+    font-size: clamp(2.5rem, 6vw, 3.5rem); /* slightly smaller headline */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    height: 3.8rem;      /* adjust input height */
+    margin-bottom: 1.2rem;
+  }
+
+  .dino_container {
+    display: none;
+  }
+
+  /* Any other adjustments you want for this mid-range */
+}
+
+
+/* Screens between 544px and 768px */
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+  main {
+    /* padding: 0;
+    margin: 0; */
+    min-height: 100vh;
+    min-width: 100%;      /* adjust container width */
+    padding: clamp(10px, 3vw, 15px) 0;
+    /* border: 2px solid red; */
+
+  }
+
+  .welcome_section p:nth-of-type(1) {
+    font-size: clamp(2.5rem, 6vw, 3.5rem); /* slightly smaller headline */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    height: 4.2rem;      /* adjust input height */
+    margin-bottom:  2rem;
+  }
+
+  main.login-active .dino_container {
+    position: absolute; 
+    left: 250px;
+    transition: left .2s ease, transform .2s ease;
+    border: 2px solid red;
+  }
+
+  .benefits_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 30px;
+  }
+
+  .benefit1,
+  .benefit2,
+  .benefit3 {
+    font-size: clamp(1.4rem, 1.5vw, 1.6rem);
+    color: black;
+  }
+
+  /* .dino_container {
+    left: 470px;
+  } */
+
+
+}
+
+@media (min-width: 1281px) and (max-width: 1366px) {
+  main {
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    min-width: 100%;      /* adjust container width */
+    padding: clamp(10px, 3vw, 15px) 0;
+    /* border: 2px solid red; */
+
+  }
+
+  .welcome_section p:nth-of-type(1) {
+    font-size: clamp(2.2rem, 2.7vw, 3.2rem); /* slightly smaller headline */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    height: 4rem;      /* adjust input height */
+    margin-bottom:  1rem;
+  }
+  
+
+  /* .dino_container {
+    left: 500px;
+  } */
+
+  main.login-active .dino_container {
+    position: absolute; 
+    left: 250px;
+    transition: left .2s ease, transform .2s ease;
+  }
+
+  .benefits_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 30px;
+  }
+
+  .benefit1,
+  .benefit2,
+  .benefit3 {
+    font-size: clamp(1.4rem, 1.5vw, 1.6rem);
+    color: black;
+  }
+  .ui_section{
+    margin-left: 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 1367px) and (max-width: 1600px) {
+  main {
+    min-height: 100vh;
+    min-width: 100%;      /* adjust container width */
+    padding: clamp(10px, 3vw, 15px) 0;
+    /* border: 2px solid red; */
+
+  }
+
+  .welcome_section p:nth-of-type(1) {
+    font-size: clamp(1.5rem, 2.5vw, 3.5rem);
+  }
+  
+  .welcome_section p:nth-of-type(2) {
+    font-size: clamp(0.5rem, 1.5vw, 2.5rem);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    height: 6rem;      /* adjust input height */
+    margin-bottom:  2rem;
+  }
+
+  input[type="submit"]{
+    font-size: clamp(1rem, 1.5vw, 2.5rem);
+
+  }
+
+
+  label{
+    font-size: clamp(1rem, 2vw, 2.5rem);
+  } 
+
+  .tick_container{
+    font-size: clamp(1rem, 1.5vw, 2rem);
+  }
+
+  .google-login-text{
+    font-size: clamp(0.7rem, 1.3vw, 2.3rem);
+  }
+  
+  .signup, .login p{
+    font-size: clamp(1rem, 2vw, 3rem);
+  }
+  
+  .signup, .login a{
+    font-size: clamp(1rem, 2vw, 3rem);
+  }
+}
