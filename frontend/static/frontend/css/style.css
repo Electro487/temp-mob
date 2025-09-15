@@ -1022,8 +1022,11 @@ input[type="submit"]:hover {
   }
 
   main.login-active{
-    /* border: 2px solid red; */
-    margin-left: 0;
+    border: 2px solid red;
+    margin-left: 0px;
+    padding-left: 10vw;
+    /* display: flex;
+    justify-content: center; */
 
   }
 
@@ -1045,13 +1048,15 @@ input[type="submit"]:hover {
 
   main.login-active .dino_container {
     position: absolute; 
-    left: 250px;
+    border: 2px solid red;
+    left: 380px;
     transition: left .2s ease, transform .2s ease;
   }
 
   .benefits_section {
     display: flex;
     flex-direction: column;
+    border: 2px solid red;
     align-items: center;
     padding-left: 30px;
   }
@@ -1064,8 +1069,14 @@ input[type="submit"]:hover {
   }
   .ui_section{
     margin-left: 0;
+    border: 2px solid red;
     display: flex;
     justify-content: flex-start;
+  }
+  .pic_section{
+    border: 2px solid red;
+    padding: 0;
+    margin: 0;
   }
 }
 
