@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  console.log(window.innerWidth, 'x', window.innerHeight);
+console.log(screen.width, 'x', screen.height, ' devicePixelRatio=', window.devicePixelRatio);
+
   // -----------------------------
   // Helper: Change page title
   // -----------------------------

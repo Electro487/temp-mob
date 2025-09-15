@@ -1010,7 +1010,7 @@ input[type="submit"]:hover {
 
 }
 
-@media (min-width: 1281px) and (max-width: 1366px) {
+@media (min-width: 1280px) and (max-width: 1366px) {
   main {
     padding: 0;
     margin: 0;
